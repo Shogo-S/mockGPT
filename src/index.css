@@ -1,0 +1,299 @@
+/* index.css */
+
+/* フォントのインポートを最上部に移動 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+/* Tailwind CSSのディレクティブ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* カスタムスタイルの追加 */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+
+  /* グローバルフォントの適用 */
+  body {
+    font-family: 'Roboto', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Segoe UI",
+      "Helvetica Neue", "Hiragino Kaku Gothic Pro", "Hiragino Sans",
+      "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    background-color: #000; /* 背景色を黒に設定（Reactコードに合わせて） */
+    color: #fff; /* 文字色を白に設定 */
+    margin: 0;
+    padding: 0;
+  }
+
+  /* 既存のスタイル */
+  * {
+    @apply border-border;
+  }
+
+  /* ロゴのスタイル */
+  .logo {
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
+  }
+
+  .logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+  }
+
+  .logo.react:hover {
+    filter: drop-shadow(0 0 2em #61dafbaa);
+  }
+
+  @keyframes logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    a:nth-of-type(2) .logo {
+      animation: logo-spin infinite 20s linear;
+    }
+  }
+
+  /* カードのスタイル */
+  .card {
+    padding: 2em;
+    position: relative; /* コピーアイコンの位置指定のために相対位置に設定 */
+  }
+
+  /* ドキュメントリンクのスタイル */
+  .read-the-docs {
+    color: #888;
+  }
+
+  /* コピーアイコンのスタイル */
+  .copy-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #888;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s;
+  }
+
+  .copy-button:hover {
+    color: #fff;
+  }
+
+  .copy-button:focus {
+    outline: none;
+  }
+
+  /* コピー成功時のスタイル */
+  .copy-button.copied {
+    color: #4caf50; /* 緑色で成功を示す */
+  }
+
+  /* メッセージコンテナのスタイル */
+  .message-container {
+    position: relative; /* コピーアイコンの位置指定のために相対位置に設定 */
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  /* ユーザーメッセージのスタイル */
+  .message-container.user {
+    background-color: #2d2d2d;
+    margin-left: 3rem;
+  }
+
+  /* アシスタントメッセージのスタイル */
+  .message-container.assistant {
+    background-color: #1a1a1a;
+    margin-right: 3rem;
+  }
+
+  /* コードブロック内のスタイル */
+  pre {
+    background: #2d2d2d;
+    padding: 16px;
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+
+  code {
+    font-family: 'Fira Code', monospace;
+    color: #fff;
+  }
+
+  /* コピーアイコンのサイズ調整 */
+  .copy-button svg {
+    width: 1.2em;
+    height: 1.2em;
+  }
+
+  /* フッターのスタイル */
+  .fixed-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000;
+    border-top: 1px solid #333;
+    z-index: 10;
+    padding: 1rem;
+  }
+
+  /* 入力ボックスのスタイル */
+  .input-box {
+    background-color: #2d2d2d;
+    border: 1px solid #444;
+    color: #fff;
+    placeholder-color: #888;
+    height: 6rem;
+    resize: none;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    width: 100%;
+  }
+
+  /* 送信ボタンのスタイル */
+  .send-button {
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .send-button:hover {
+    background-color: #1c86ee;
+  }
+
+  .send-button:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+  }
+
+  /* クリアボタンのスタイル */
+  .clear-button {
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .clear-button:hover {
+    background-color: #ff1a1a;
+  }
+
+  .clear-button:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+  }
+
+  /* モデルセレクトのスタイル */
+  .model-select {
+    background-color: #1f2937; /* 背景色を調整 */
+    color: #fff; /* 文字色を白に設定 */
+    padding: 12px 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    min-width: 150px;
+    appearance: none; /* デフォルトの矢印を非表示 */
+  }
+
+  .model-select option {
+    background-color: #1f2937; /* ドロップダウンの背景色を調整 */
+    color: #fff; /* ドロップダウンの文字色を白に設定 */
+  }
+
+  /* レスポンシブデザイン */
+  @media (max-width: 768px) {
+    .message-container.user,
+    .message-container.assistant {
+      margin: 0;
+    }
+
+    .fixed-footer {
+      padding: 0.5rem;
+    }
+
+    .send-button,
+    .clear-button {
+      padding: 0.5rem 1rem;
+    }
+  }
+}
